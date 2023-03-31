@@ -36,7 +36,7 @@ def iberdrola_light(pdf_path):
         invoice_data["Potencia facturada"] = search_regex(second_page_text, r"(?<=Potencia facturada.*)(\d,\d+)(?= kW)")
         invoice_data["€ Potencia punta"] = search_regex(second_page_text, r"(?<=Punta.*x )(-?0,\d+)(?=\s./kW)")
         invoice_data["€ Potencia valle"] = search_regex(second_page_text, r"(?<=Valle.*x )(-?0,\d+)(?=\s./kW)")
-        invoice_data["Energía facturada"] = search_regex(second_page_text, r"(?<=Energía facturada.*)(-?\d+)(?= kW)")
+        invoice_data["kW Energía facturada"] = search_regex(second_page_text, r"(?<=Energía facturada.*)(-?\d+)(?= kW)")
         invoice_data["€ Energía facturada"] = search_regex(second_page_text, r"(?<=Energía facturada.*x )(-?0,\d+)(?= ./kW)")
         invoice_data["€ Bono social"] = search_regex(second_page_text, r"(?<=bono social.*x )(-?0,\d+)(?= ./día)")
         invoice_data["€ Tope precio del gas"] = search_regex(second_page_text, r"(?<=Tope precio del gas.*x )(-?0,\d+)(?= ./kW)")
@@ -44,7 +44,7 @@ def iberdrola_light(pdf_path):
         invoice_data["€ Alquiler equipos medida"] = search_regex(second_page_text, r"(?<=Alquiler equipos medida.*x )(-?0,\d+)(?= ./día)")
         invoice_data["TOTAL IMPORTE FACTURA"] = search_regex(second_page_text, r"(?<=TOTAL IMPORTE FACTURA )(-?\d+,\d+)")
 
-        print(invoice_data)
+        # print(invoice_data)
 
     return invoice_data
     
