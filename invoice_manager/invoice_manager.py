@@ -9,7 +9,6 @@ def get_invoice_data(pdf_path):
 
     if invoice_type == "light":
         if invoice_company == "iberdrola":
-            return None
             return iberdrola_light(pdf_path)
     elif invoice_type == "gas":
         if invoice_company == "endesa":
