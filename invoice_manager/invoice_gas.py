@@ -10,6 +10,7 @@ def endesa_gas(pdf_path):
         "€ Fijo": None,
         "€ Energía": None,
         "% Descuento": None,
+        "% IVA": None,
         "€ Total": None,
         "€ Endesa X": None,
     }
@@ -30,6 +31,7 @@ def endesa_gas(pdf_path):
         invoice_data["€ Fijo"] = search_regex(second_page_text, r"(?<=Fijo Gas .*)(\d,\d+)(?= Eur/día)")
         invoice_data["€ Energía"] = search_regex(second_page_text, r"(?<=Energía Gas .*)(\d,\d+)(?= Eur/kWh)")
         invoice_data["% Descuento"] = search_regex(second_page_text, r"(?<=Dto\. Promocional Gas -)(\d+,\d+)(?= %)")
+        invoice_data["% IVA"] = search_regex(second_page_text, r"(?<=IVA .*)(\d+)(?=%)")
         invoice_data["€ Total"] = search_regex(second_page_text, r"(?<=TOTAL IMPORTE FACTURA )(\d+,\d+)(?= €)")
         invoice_data["€ Endesa X"] = search_regex(second_page_text, r"(?<=Endesa X )(\d+,\d+)(?= €)")
 

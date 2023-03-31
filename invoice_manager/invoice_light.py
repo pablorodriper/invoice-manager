@@ -17,6 +17,7 @@ def iberdrola_light(pdf_path):
         "€ Mecanismo ajuste": None,
         "€ Alquiler equipos medida": None,
         "% Descuento": None,
+        "% IVA": None,
         "TOTAL IMPORTE FACTURA": None,
     }
 
@@ -44,6 +45,7 @@ def iberdrola_light(pdf_path):
         invoice_data["€ Mecanismo ajuste"] = search_regex(second_page_text, r"(?<=Mecanismo ajuste.*x )(-?0,\d+)(?= ./kW)")
         invoice_data["€ Alquiler equipos medida"] = search_regex(second_page_text, r"(?<=Alquiler equipos medida.*x )(-?0,\d+)(?= ./día)")
         invoice_data["% Descuento"] = search_regex(second_page_text, r"(?<=Descuento sobre consumo )(\d+)(?=%)")
+        invoice_data["% IVA"] = search_regex(second_page_text, r"(?<=IVA .*)(\d+)(?=%)")
         invoice_data["TOTAL IMPORTE FACTURA"] = search_regex(second_page_text, r"(?<=TOTAL IMPORTE FACTURA )(-?\d+,\d+)")
 
         # print(invoice_data)
