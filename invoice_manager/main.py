@@ -1,20 +1,17 @@
 from glob import glob
 import pandas as pd
 
-# from invoice_manager import InvoiceManager
-from light_invoice import iberdrola_light
+from invoice_manager import get_invoice_data
 
 
 def main():
-    # invoice_manager = InvoiceManager()
     results = []
 
     for pdf_path in glob("../data/*/*/*.pdf"):
         print(pdf_path)
 
-        # invoice_data = invoice_manager.get_invoice_data(pdf_path)
-        invoice_data = iberdrola_light(pdf_path)
-
+        invoice_data = get_invoice_data(pdf_path)
+        
         results.append(invoice_data)
 
 
